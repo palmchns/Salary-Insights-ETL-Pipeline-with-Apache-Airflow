@@ -4,9 +4,9 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime
 
-RAW_DATA_PATH = '/data/Salary_Data.csv'
-CLEAN_DATA_PATH = '/data/Salary_Data_Cleaned.csv'
-DB_PATH = '/data/salary_insights.db'
+RAW_DATA_PATH = r"C:\Users\acer\Documents\R2DE\mini-project\data\Salary_Data.csv"
+CLEAN_DATA_PATH = r"C:\Users\acer\Documents\R2DE\mini-project\data\Salary_Data_Cleaned.csv"
+DB_PATH = r"C:\Users\acer\Documents\R2DE\mini-project\data\salary_insights.db"
 
 def extract_salary_data():
     df = pd.read_csv(RAW_DATA_PATH)
@@ -35,7 +35,7 @@ def load_to_sqlite():
 
 with DAG(
     'salary_data_etl_pipeline',
-    start_date=datetime(2026, 1, 1),
+    start_date=datetime(2025, 1, 1),
     schedule_interval='@daily',
     catchup=False
 ) as dag:
